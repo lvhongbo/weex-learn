@@ -1,0 +1,105 @@
+<template>
+  <div class="ct" style="height: {{ctHeight}}">
+    <image class="img" style="width: 400px; height: 400px;" src="{{img}}"></image>
+    <text style="font-size: 42;">Hello Weex!!!</text>
+    
+
+  
+    <input
+    type="url"
+    autofocus="true"
+    placeholder="..."
+    value="http://alibaba.github.io/weex/"
+    style="placeholder-color: #666666;">
+   </input>
+   
+
+    
+    <slider class="slider">
+      <div class="slider-pages" repeat="{{itemList}}">
+        <image class="img" src="{{pictureUrl}}"></image>
+        <text class="title">{{title}}</text>
+      </div>
+
+      <indicator class="indicator"></indicator>
+    </slider>   
+    
+  <scroller>
+    <div repeat="{{list}}">
+      <text>{{name}}: ${{price}}</text>
+    </div>
+  </scroller>     
+    
+    <div>
+      <text>muted:</text>
+      <switch checked="true"></switch>
+    </div> 
+    
+  </div>
+  
+
+</template>
+
+<style>
+  .ct {
+    width: 750;
+    align-items: center;
+    justify-content: center;
+  }
+  .img {
+    margin-bottom: 20px;
+  }
+  
+   .img {width: 150; height: 150;}
+  .title {flex: 1; color: #ff0000; font-size: 48; font-weight: bold; background-color: #eeeeee;}
+  .slider {
+    flex-direction: row;
+    margin: 18;
+    width: 714;
+    height: 230;
+  }
+  .slider-pages {
+    flex-direction: row;
+    width: 714;
+    height: 200;
+  }
+  
+  .indicator {
+    width:714;
+    height:200;
+    position:absolute;
+    top:1;
+    left:1;
+    item-color: red;
+    item-selectedColor: blue;
+    item-size: 20;
+  } 
+  
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      ctHeight: 800,
+      img: '//gw.alicdn.com/tps/i2/TB1DpsmMpXXXXabaXXX20ySQVXX-512-512.png_400x400.jpg',
+   
+      itemList: [
+        {itemId: '520421163634', title: 'item1', pictureUrl: 'https://gd2.alicdn.com/bao/uploaded/i2/T14H1LFwBcXXXXXXXX_!!0-item_pic.jpg'},
+        {itemId: '522076777462', title: 'item2', pictureUrl: 'https://gd1.alicdn.com/bao/uploaded/i1/TB1PXJCJFXXXXciXFXXXXXXXXXX_!!0-item_pic.jpg'},
+        {itemId: '522076777462', title: 'iten3', pictureUrl: 'https://gd3.alicdn.com/bao/uploaded/i3/TB1x6hYLXXXXXazXVXXXXXXXXXX_!!0-item_pic.jpg'}
+      ] ,
+      
+      list: [
+        {name: '...', price: 100},
+        {name: '...', price: 500},
+        {name: '...', price: 1.5}
+      ]
+      
+
+      
+    },
+    ready: function () {
+      this.ctHeight = this.$getConfig().env.deviceHeight
+    }
+  }
+</script>
